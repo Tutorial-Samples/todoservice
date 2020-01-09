@@ -17,8 +17,8 @@ public class HelloWorldController {
 
     @GetMapping("/hello-world-bean")
     public HelloWorldBean helloWorldBean(){
-        throw new RuntimeException("Something terribly went wrong");
-        //return new HelloWorldBean("This is customized welcome message!!!");
+        //throw new RuntimeException("Something terribly went wrong");
+        return new HelloWorldBean("This is customized welcome message!!!");
     }
 
     @GetMapping("/hello-world/path-variable/{name}")

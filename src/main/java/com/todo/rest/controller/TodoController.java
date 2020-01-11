@@ -15,6 +15,11 @@ public class TodoController {
     @Autowired
     private TodoService todoService;
 
+    /**
+     * Retieves all the todos for a user
+     * @param userName
+     * @return
+     */
     @GetMapping("/users/{userName}/todos")
     public List<Todo> getAllTodos(@PathVariable String userName){
         return todoService.findAll();

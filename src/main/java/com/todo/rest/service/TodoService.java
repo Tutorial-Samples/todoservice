@@ -18,6 +18,7 @@ public class TodoService {
         todos.add(new Todo(++idCounter, "balaji", "Learn Angular Material", new Date(), false));
         todos.add(new Todo(++idCounter, "balaji", "Learn Spring Boot", new Date(), false));
         todos.add(new Todo(++idCounter, "balaji", "Learn JPA", new Date(), false));
+        todos.add(new Todo(++idCounter, "balaji", "Learn Git Hub", new Date(), false));
     }
 
     public List<Todo> findAll(){

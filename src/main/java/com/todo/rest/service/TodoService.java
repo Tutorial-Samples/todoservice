@@ -43,4 +43,15 @@ public class TodoService {
             return null;
         }
     }
+
+    public Todo saveTodo(Todo todo){
+        if(todo.getId()==-1){
+            todo.setId(++idCounter);
+            todos.add(todo);
+        }else{
+            deleteTodo(todo.getId());
+            todos.add(todo);
+        }
+        return todo;
+    }
 }

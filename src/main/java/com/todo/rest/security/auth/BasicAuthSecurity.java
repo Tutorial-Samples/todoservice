@@ -17,5 +17,6 @@ public class BasicAuthSecurity extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                 .anyRequest().authenticated().and().httpBasic();
+        httpSecurity.headers().frameOptions().disable();
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -25,16 +26,13 @@ public class TodoController {
      */
     @GetMapping("/users/{userName}/todos")
     public List<Todo> getAllTodos(@PathVariable String userName){
-        return todoService.findAll();
+        return todoService.findAll(userName);
     }
 
     @DeleteMapping("/users/{userName}/todos/{id}")
     public ResponseEntity<Void> deleteTodo(@PathVariable String userName, @PathVariable long id){
-        Todo todo = todoService.deleteTodo(id);
-        if(todo!=null){
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.notFound().build();
+        todoService.deleteTodo(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/users/{userName}/todos/{id}")
@@ -53,7 +51,7 @@ public class TodoController {
     }
 
     @PostMapping("/users/{userName}/todos")
-    public ResponseEntity<Void> updateTodo(
+    public ResponseEntity<Void> createTodo(
             @PathVariable String userName,
             @RequestBody Todo todo){
         todo.setUserName(userName);
